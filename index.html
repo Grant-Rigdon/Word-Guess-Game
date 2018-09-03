@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+      
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Hangman</h1>
+            <p class="lead">Beer Styles</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="container col-md-6 box">
+                <img src="assets/images/Placeholder.png">
+            </div>
+            <div class="container col-md-6 box">
+                <h4>Press Any Key To Get Started!</h4>
+                <h4>Wins</h4>
+                <h4 id="wins">0</h4>
+                <h4>Current Word</h4>
+                <h4 id="current"></h4>
+                <h4>Number of Guesses Remaining</h4>
+                <h4 id="guesses-left">12</h4>
+                <h4>Letters Already Guessed</h4>
+                <h4 id="guessed"></h4>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="assets/game.js"></script>    
+</body>
+</html>
