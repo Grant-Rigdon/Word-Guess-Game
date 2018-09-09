@@ -9,25 +9,63 @@ for (var i = 0; i < randomWord.length; i++){
     underscore.push('_');    
 }
 
+// variables and functions
 var current = document.getElementById("current");
     current.textContent = underscore;
 var wins = document.getElementById("wins");
+var winCount = 0;
+    wins.textContent = winCount;
 var guessesLeft = document.getElementById("guesses-left");
+var counter = 12;
+    guessesLeft.textContent = counter;
+var guessed = document.getElementById("guessed");
+var letters = [];
+var isFinished = false;   
+function resetGame(){
+    counter = 12;
+    letters = [];
+}
+
 
 // user guess
 document.onkeyup = function(event) {
     var userGuess = event.key;
-
+    if (isFinished){
+        resetGame();
+        isFinished = false;
+    }
 // check users guess
 for (var i = 0; i < randomWord.length; i++){
-    if (userGuess == randomWord[i]){
-        underscore.push(userGuess);
+    
+    if (userGuess.toLowerCase() == randomWord[i]){
+        underscore[i] = userGuess;
         current.textContent = underscore;
+
+        if (underscore.indexOf('_') === -1){
+            winCount++;
+            wins.textContent = winCount;
+            alert('Congrats, you guessed ' + randomWord + '!');
+            isFinished = true;
+        }
     }
-    else {
-        
+    else if (randomWord.indexOf(userGuess) == -1) {
+        if (letters.indexOf(userGuess) == -1) {
+            letters.push(userGuess);
+            guessed.textContent = letters;
+            counter--;
+            guessesLeft.textContent = counter;
+            end;
+        }
     }
+if (counter < 1){
+    alert('You Lose');
+    end;
+    isFinished = true;
+}
+    
+    
+ 
 }
 
-// if wrong show letters guessed
 }
+
