@@ -1,5 +1,5 @@
 // create an array of words
-var words = ['porter', 'ipa', 'schwartzbier', 'pilsner', 'bock', 'lambic', 'stout', 'gueuze', 'gose', 'witbier', 'hefeweizen', 'kellerbier', 'marzen', 'kolsch', 'doppelbock', 'esb', 'blonde', 'steam', 'barleywine', 'saison', 'trappist', 'dubbel', 'tripel' ];
+var words = ['porter', 'ipa', 'schwartzbier', 'pilsner', 'bock', 'lambic', 'stout', 'witbier', 'hefeweizen', 'kellerbier', 'marzen', 'kolsch', 'doppelbock', 'esb', 'blonde', 'steam', 'barleywine', 'saison', 'trappist', 'dubbel', 'tripel' ];
 // choose word randomly
 var randomWord = words[Math.floor(Math.random()*words.length)];
 console.log(randomWord);
@@ -21,19 +21,35 @@ var counter = 12;
 var guessed = document.getElementById("guessed");
 var letters = [];
 var isFinished = false;   
+
 function resetGame(){
     counter = 12;
+    guessesLeft.textContent = counter;
     letters = [];
+    guessed.textContent = letters;
+    randomWord = words[Math.floor(Math.random()*words.length)];
+    underscore = [];
+    for (var i = 0; i < randomWord.length; i++){
+        underscore.push('_');}
+    current.textContent = underscore;
+    
 }
 
 
 // user guess
 document.onkeyup = function(event) {
     var userGuess = event.key;
+
     if (isFinished){
         resetGame();
         isFinished = false;
-    }
+    } 
+    
+    if (counter < 1){
+        alert('You Lose');        
+        isFinished = true;
+    }   
+
 // check users guess
 for (var i = 0; i < randomWord.length; i++){
     
@@ -49,6 +65,7 @@ for (var i = 0; i < randomWord.length; i++){
         }
     }
     else if (randomWord.indexOf(userGuess) == -1) {
+        
         if (letters.indexOf(userGuess) == -1) {
             letters.push(userGuess);
             guessed.textContent = letters;
@@ -57,13 +74,9 @@ for (var i = 0; i < randomWord.length; i++){
             end;
         }
     }
-if (counter < 1){
-    alert('You Lose');
-    end;
-    isFinished = true;
-}
+
     
-    
+
  
 }
 
